@@ -125,6 +125,13 @@ public class ParserModel extends BaseModel {
 
   private static final String PARSER_TYPE = "parser-type";
 
+  /**
+   * Constructor to be used when auto de-serializing this model
+   */
+  public ParserModel() {
+    super(COMPONENT_NAME,true);
+  }
+
   public ParserModel(String languageCode, MaxentModel buildModel, MaxentModel checkModel,
       MaxentModel attachModel, POSModel parserTagger,
       ChunkerModel chunkerTagger, opennlp.tools.parser.HeadRules headRules,

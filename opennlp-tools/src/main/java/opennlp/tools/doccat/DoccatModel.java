@@ -37,6 +37,13 @@ public class DoccatModel extends BaseModel {
   private static final String COMPONENT_NAME = "DocumentCategorizerME";
   private static final String DOCCAT_MODEL_ENTRY_NAME = "doccat.model";
 
+  /**
+   * Constructor to be used when auto de-serializing this model
+   */
+  public DoccatModel() {
+    super(COMPONENT_NAME,true);
+  }
+
   public DoccatModel(String languageCode, MaxentModel doccatModel,
       Map<String, String> manifestInfoEntries, DoccatFactory factory) {
     super(COMPONENT_NAME, languageCode, manifestInfoEntries, factory);

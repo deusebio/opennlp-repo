@@ -50,6 +50,13 @@ public final class TokenizerModel extends BaseModel {
   private static final String TOKENIZER_MODEL_ENTRY = "token.model";
 
   /**
+   * Constructor to be used when auto de-serializing this model
+   */
+  public TokenizerModel() {
+    super(COMPONENT_NAME,true);
+  }
+
+  /**
    * Initializes the current instance.
    *
    * @param tokenizerModel the model

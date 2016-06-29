@@ -76,6 +76,13 @@ public class TokenNameFinderModel extends BaseModel {
 
   static final String SEQUENCE_CODEC_CLASS_NAME_PARAMETER = "sequenceCodecImplName";
 
+  /**
+   * Constructor to be used when auto de-serializing this model
+   */
+  public TokenNameFinderModel() {
+    super(COMPONENT_NAME,true);
+  }
+
   public TokenNameFinderModel(String languageCode, SequenceClassificationModel<String> nameFinderModel,
       byte[] generatorDescriptor, Map<String, Object> resources, Map<String, String> manifestInfoEntries,
       SequenceCodec<String> seqCodec, TokenNameFinderFactory factory) {

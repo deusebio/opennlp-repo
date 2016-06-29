@@ -50,6 +50,13 @@ public class ChunkerModel extends BaseModel {
   private static final String CHUNKER_MODEL_ENTRY_NAME = "chunker.model";
 
   /**
+   * Constructor to be used when auto de-serializing this model
+   */
+  public ChunkerModel() {
+    super(COMPONENT_NAME,true);
+  }
+
+  /**
    * @deprecated Use
    *             {@link #ChunkerModel(String, MaxentModel, Map, ChunkerFactory)}
    *             instead.

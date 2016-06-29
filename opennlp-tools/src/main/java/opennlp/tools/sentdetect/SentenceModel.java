@@ -48,6 +48,13 @@ public class SentenceModel extends BaseModel {
 
   private static final String MAXENT_MODEL_ENTRY_NAME = "sent.model";
 
+  /**
+   * Constructor to be used when auto de-serializing this model
+   */
+  public SentenceModel() {
+    super(COMPONENT_NAME,true);
+  }
+
   public SentenceModel(String languageCode, MaxentModel sentModel,
       Map<String, String> manifestInfoEntries, SentenceDetectorFactory sdFactory) {
     super(COMPONENT_NAME, languageCode, manifestInfoEntries, sdFactory);

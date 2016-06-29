@@ -18,13 +18,7 @@
 
 package opennlp.tools.util.model;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +39,7 @@ import opennlp.tools.util.ext.ExtensionLoader;
  * TODO:
  * Provide sub classes access to serializers already in constructor
  */
-public abstract class BaseModel implements ArtifactProvider {
+public abstract class BaseModel implements ArtifactProvider, Externalizable {
 
   private static int MODEL_BUFFER_SIZE_LIMIT = Integer.MAX_VALUE;
 
@@ -78,7 +72,7 @@ public abstract class BaseModel implements ArtifactProvider {
 
   private final boolean isLoadedFromSerialized;
 
-  private BaseModel(String componentName, boolean isLoadedFromSerialized) {
+  protected BaseModel(String componentName, boolean isLoadedFromSerialized) {
     this.isLoadedFromSerialized = isLoadedFromSerialized;
 
     if (componentName == null)
@@ -641,5 +635,33 @@ public abstract class BaseModel implements ArtifactProvider {
 
   public boolean isLoadedFromSerialized() {
     return isLoadedFromSerialized;
+  }
+
+  public void writeExternal( final ObjectOutput objectOutput ) throws IOException {
+    OutputStream os;
+    if (objectOutput instanceof OutputStream)
+      os = (OutputStream) objectOutput;
+    else
+      os = new OutputStream() {
+        @Override
+        public void write(int i) throws IOException {
+          objectOutput.write(i);
+        }
+      };
+    serialize(os);
+  }
+
+  public void readExternal( final ObjectInput objectInput ) throws IOException, ClassNotFoundException {
+    InputStream is;
+    if (objectInput instanceof InputStream)
+      is = (InputStream) objectInput;
+    else
+      is = new InputStream() {
+        @Override
+        public int read() throws IOException {
+          return objectInput.read();
+        }
+      };
+    loadModel(is);
   }
 }

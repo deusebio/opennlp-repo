@@ -46,6 +46,13 @@ public final class POSModel extends BaseModel {
   public static final String POS_MODEL_ENTRY_NAME = "pos.model";
 
   /**
+   * Constructor to be used when auto de-serializing this model
+   */
+  public POSModel() {
+    super(COMPONENT_NAME,true);
+  }
+
+  /**
    * @deprecated Use
    *             {@link #POSModel(String, MaxentModel, Map, POSTaggerFactory)}
    *             instead.
