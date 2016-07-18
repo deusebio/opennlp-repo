@@ -31,10 +31,14 @@
 
 	<groupId>org.apache.opennlp</groupId>
 	<artifactId>opennlp</artifactId>
-	<version>1.6.1-SNAPSHOT</version>
+	<version>1.6.1-cgnal-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Apache OpenNLP Reactor</name>
+
+	<properties>
+		<qualifier>cgnal</qualifier>
+	</properties>
 
 	<prerequisites>
 		<maven>3.0</maven>

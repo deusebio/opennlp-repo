@@ -36,7 +36,7 @@ public final class POSModelLoader extends ModelLoader<POSModel>{
   }
 
   @Override
-  protected POSModel loadModel(InputStream modelIn) throws IOException,
+  public POSModel loadModel(InputStream modelIn) throws IOException,
       InvalidFormatException {
     return new POSModel(modelIn);
   }
